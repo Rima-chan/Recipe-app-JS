@@ -21,7 +21,9 @@ const whitelist = ['http://127.0.0.1', 'http://127.0.0.1:5500', 'http://localhos
 //     optionsSuccessStatus: 200
 // };
 const corsOptions = {
-    origin: whitelist
+    origin: 'https://rima-chan.github.io',
+    optionSuccessStatus: 200,
+    methods: 'GET'
 }
 app.use(cors(corsOptions));
 
@@ -30,6 +32,9 @@ const limiter = rateLimit({
     max: 1
 });
 app.use(limiter);
+app.use((req, res, next) => {
+    res.header()
+})
 app.use('/recipe', recipe);
 app.use('/recipe', (req,res) => res.json({success: 'ok'}))
 
