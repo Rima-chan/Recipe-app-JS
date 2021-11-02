@@ -28,6 +28,15 @@ const limiter = rateLimit({
     max: 1
 });
 app.use(limiter);
+
+app.use((req,res, next) => {
+    res.setHeader("Access-Control-Allow-Orign", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+})
 app.use('/recipe', recipe);
 app.use('/recipe', (req,res) => res.json({success: 'ok'}))
 
