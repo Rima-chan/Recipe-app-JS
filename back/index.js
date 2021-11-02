@@ -25,16 +25,24 @@ const whitelist = ['http://127.0.0.1', 'http://127.0.0.1:5500', 'http://localhos
 //     optionSuccessStatus: 200,
 //     methods: 'GET'
 // }
-app.use(cors());
+
+const corsOptionsDelegate = (req, callback) => {
+    let corsOptions;
+    let isDomainAllowed = whitelist.indexOf(req.header('Origin')) !== -1;
+    if(isDomainAllowed) {
+        corsOptions = {origin: true}
+    } else {
+        corsOptions = {origin: false}
+    }
+    callback(null, corsOptions)
+}
+app.use(cors(corsOptionsDelegate));
 
 const limiter = rateLimit({
     windowMs: 1000,
     max: 1
 });
 app.use(limiter);
-app.use((req, res, next) => {
-    res.header()
-})
 app.use('/recipe', recipe);
 app.use('/recipe', (req,res) => res.json({success: 'ok'}))
 
