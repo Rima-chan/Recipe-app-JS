@@ -3,7 +3,7 @@ const express = require('express');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const recipe = require('./recipe/index');
 
 app.use(express.json());
@@ -27,5 +27,7 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 app.use('/recipe', recipe);
+app.use('/recipe', (req,res) => res.json({success: 'ok'}))
+
 
 app.listen(port, () => console.log(`App listening on port : ${port}`))

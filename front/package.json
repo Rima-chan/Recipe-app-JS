@@ -1,0 +1,28 @@
+{
+  "name": "recipe-app",
+  "version": "1.0.0",
+  "description": "Recipe app front, API",
+  "main": "app.js",
+  "scripts": {
+    "tailwind": "npx tailwindcss build index.css -o dist/index.css",
+    "autoprefixer": "postcss dist/index.css -u autoprefixer --no-map -o dist/index.css",
+    "minify": "postcss dist/index.css -u cssnano --no-mao -o dist/index.min.css",
+    "build": "npm run tailwind && npm run autoprefixer",
+    "production": "npm run tailwind && npm run autoprefixer && npm run minify"
+  },
+  "keywords": [
+    "Recipe",
+    "app",
+    "frontend",
+    "fetch"
+  ],
+  "author": "Marie Beaujeu",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.0",
+    "cssnano": "^5.0.8",
+    "dotenv": "^10.0.0",
+    "postcss-cli": "^9.0.1",
+    "tailwindcss": "^2.2.19"
+  }
+}

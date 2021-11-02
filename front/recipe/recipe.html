@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../dist/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Recipe</title>
+</head>
+<body>
+    <div class="flex">
+        <div class="min-h-screen bg-green-400 bg-opacity-60 py-8 px-4 sm:px-8">
+            <div class="text-center sm:text-left">
+                <span class="inline-flex items-center pb-5">
+                    <i class="fas fa-user-circle text-4xl"></i>
+                    <p class="hidden sm:inline-block text-lg pl-3">Jeffrey Lebowski</p>
+                </span>
+                <ul>
+                    <li class="hover:bg-green-200 rounded my-1 py-2 px-2 transition-colors duration-200 ease-in-out"><a href="../../index.html" class="block w-full text-2xl sm:text-base"><i class="fas fa-book-open"></i><span class="hidden sm:inline-block pl-3">My recipes</span></a></li>
+                    <li class="hover:bg-green-200 rounded my-1 py-2 px-2 transition-colors duration-200 ease-in-out"><a href="../new-recipe/new-recipe.html" class="block w-full text-2xl sm:text-base"><i class="fas fa-plus-circle"></i><span class="hidden sm:inline-block pl-3">Add recipe</span></a></li>
+                    <li class="hover:bg-green-200 rounded my-1 py-2 px-2 transition-colors duration-200 ease-in-out"><a href="../my-favourites/my-favourites.html" class="block w-full text-2xl sm:text-base"><i class="fas fa-cookie-bite"></i><span class="hidden sm:inline-block pl-3">My favourites</span></a></li>
+                    <li class="hover:bg-green-200 rounded my-1 py-2 px-2 transition-colors duration-200 ease-in-out"><a href="../search-recipe/search-recipe.html" class="block w-full text-2xl sm:text-base"><i class="fas fa-utensil-spoon"></i><span class="hidden sm:inline-block pl-3">Search recipes</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex-1 shadow-inner">
+            <div class="flex justify-center items-center mt-5">
+                <i class="fas fa-utensils text-lg sm:text-2xl text-yellow-500 pl-3"></i>
+                <h1 class="text-lg text-center uppercase px-3 font-semibold text-yellow-500">My favourites</h1>
+                <i class="fas fa-utensils text-lg sm:text-2xl text-yellow-500 pr-3"></i>
+            </div>
+            <div id="recipe_wrapper" class="flex w-full">
+                
+            </div>
+        </div>
+    </div>
+    <script src="../js/config.js"></script>
+    <script src="../js/recipeManager.js"></script>
+    <script src="../js/favoritesManager.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

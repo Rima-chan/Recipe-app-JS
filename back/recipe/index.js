@@ -31,6 +31,8 @@ const fetchRecipeById = async(id) => {
     }
 }
 
+
+
 router.get('/search/:searchText', async(req, res) => {
     const searchText = req.params.searchText;
     const data = await fetchRecipes(searchText);
