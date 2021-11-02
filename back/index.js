@@ -30,13 +30,15 @@ const limiter = rateLimit({
 app.use(limiter);
 
 app.use((req,res, next) => {
-    res.setHeader("Access-Control-Allow-Orign", "*");
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept"
-    );
+    const origin = req.headers.origin;
+    if(whitelist.indexOf(origin) > -1) {
+        res.setHeader("Access-Control-Allow-Orign", origin);
+    }
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Accept');
+    res.setHeader('Access-Control-Allow-Credentials', true);
     next();
-})
+});
 app.use('/recipe', recipe);
 app.use('/recipe', (req,res) => res.json({success: 'ok'}))
 
