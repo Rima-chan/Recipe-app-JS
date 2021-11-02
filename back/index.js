@@ -11,7 +11,7 @@ app.use(express.json());
 const whitelist = ['http://127.0.0.1', 'http://127.0.0.1:5500', 'http://localhost:3000', 'https://rima-chan.github.io', 'https://git.heroku.com/recipe-js.git', 'https://recipe-js.herokuapp.com/'];
 const corsOptions = {
     origin: (origin, callback) => {
-        if (!origin || whitelist.indexOf(origin) !== -1) {
+        if (whitelist.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));
