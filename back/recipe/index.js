@@ -8,6 +8,7 @@ const fetchRecipes = async(searchText) => {
     try {
         const result = await axios({
             method: 'get',
+            headers: {'permission-polict': 'interest-cojort=()'} ,
             url: url
         });
         const response = await result.data;
