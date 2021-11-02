@@ -10013,6 +10013,38 @@ video {
   }
 }
 
+@-webkit-keyframes like-btn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  90% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes like-btn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  90% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .animate-none {
   -webkit-animation: none;
           animation: none;
@@ -10036,6 +10068,11 @@ video {
 .animate-bounce {
   -webkit-animation: bounce 1s infinite;
           animation: bounce 1s infinite;
+}
+
+.animate-like-btn {
+  -webkit-animation: like-btn 300ms cubic-bezier(.99,.01,.37,.97);
+          animation: like-btn 300ms cubic-bezier(.99,.01,.37,.97);
 }
 
 .cursor-auto {
@@ -41618,6 +41655,11 @@ video {
             animation: bounce 1s infinite;
   }
 
+  .sm\:animate-like-btn {
+    -webkit-animation: like-btn 300ms cubic-bezier(.99,.01,.37,.97);
+            animation: like-btn 300ms cubic-bezier(.99,.01,.37,.97);
+  }
+
   .sm\:cursor-auto {
     cursor: auto;
   }
@@ -72844,6 +72886,11 @@ video {
   .md\:animate-bounce {
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
+  }
+
+  .md\:animate-like-btn {
+    -webkit-animation: like-btn 300ms cubic-bezier(.99,.01,.37,.97);
+            animation: like-btn 300ms cubic-bezier(.99,.01,.37,.97);
   }
 
   .md\:cursor-auto {
@@ -104074,6 +104121,11 @@ video {
             animation: bounce 1s infinite;
   }
 
+  .lg\:animate-like-btn {
+    -webkit-animation: like-btn 300ms cubic-bezier(.99,.01,.37,.97);
+            animation: like-btn 300ms cubic-bezier(.99,.01,.37,.97);
+  }
+
   .lg\:cursor-auto {
     cursor: auto;
   }
@@ -135302,6 +135354,11 @@ video {
             animation: bounce 1s infinite;
   }
 
+  .xl\:animate-like-btn {
+    -webkit-animation: like-btn 300ms cubic-bezier(.99,.01,.37,.97);
+            animation: like-btn 300ms cubic-bezier(.99,.01,.37,.97);
+  }
+
   .xl\:cursor-auto {
     cursor: auto;
   }
@@ -166528,6 +166585,11 @@ video {
   .\32xl\:animate-bounce {
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
+  }
+
+  .\32xl\:animate-like-btn {
+    -webkit-animation: like-btn 300ms cubic-bezier(.99,.01,.37,.97);
+            animation: like-btn 300ms cubic-bezier(.99,.01,.37,.97);
   }
 
   .\32xl\:cursor-auto {
