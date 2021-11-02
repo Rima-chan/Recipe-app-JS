@@ -20,12 +20,12 @@ const whitelist = ['http://127.0.0.1', 'http://127.0.0.1:5500', 'http://localhos
 //     methods: ['GET'],
 //     optionsSuccessStatus: 200
 // };
-const corsOptions = {
-    origin: 'https://rima-chan.github.io',
-    optionSuccessStatus: 200,
-    methods: 'GET'
-}
-app.use(cors(corsOptions));
+// const corsOptions = {
+//     origin: 'https://rima-chan.github.io',
+//     optionSuccessStatus: 200,
+//     methods: 'GET'
+// }
+app.use(cors());
 
 const limiter = rateLimit({
     windowMs: 1000,
