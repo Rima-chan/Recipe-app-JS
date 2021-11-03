@@ -40,7 +40,7 @@ function displaySearchResults(list) {
                                     </button>
                                 </div>
                             </div>
-                            <a href="../recipe/recipe.html?id=${recipe.id}" class="uppercase text-yellow-500 hover:text-yellow-700 transition-colors duration-150 ease-linear font-semibold text-sm flex-shrink-0 cursor-pointer pl-3 pb-3">Voir plus...</a>
+                            <a href="../recipe/recipe.html?id=${recipe.id}" class="uppercase text-yellow-500 hover:text-yellow-700 transition-colors duration-150 ease-linear font-semibold text-sm flex-shrink-0 cursor-pointer pl-3 pb-3">See more...</a>
                         </div>`;
         Object.defineProperty(recipe, 'liked', {
             value: favorite,
