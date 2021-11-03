@@ -2,7 +2,7 @@ const myRecipesWrapper = document.querySelector('#recipes_wrapper');
 const recipes = getRecipes();
 
 document.addEventListener('DOMContentLoaded', () => {
-    displayRecipe(recipes, myRecipesWrapper);   
+    displayRecipe(recipes, myRecipesWrapper, './front/recipe/recipe.html');   
 });
 
 myRecipesWrapper.addEventListener('click', (e) => {

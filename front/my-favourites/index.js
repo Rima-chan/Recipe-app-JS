@@ -2,11 +2,10 @@ const favoritesWrapper = document.querySelector('#favorites_wrapper');
 
 document.addEventListener('DOMContentLoaded', () => {
     let favorites = getFavorites();
-    displayRecipe(favorites, favoritesWrapper)
+    displayRecipe(favorites, favoritesWrapper, '../recipe/recipe.html');
 })
 
 favoritesWrapper.addEventListener('click', (e) => {
-    console.log(e)
     if (e.target.dataset.button) {
         toggleIcon(e);
         const id = e.target.dataset?.button.split('_')[1];
