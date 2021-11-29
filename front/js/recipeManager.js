@@ -18,6 +18,12 @@ function removeRecipe(id) {
     saveRecipes(recipes);
 }
 
+function removeFromFavorites(id) {
+    let favorites = getFavorites();
+    favorites = favorites.filter(favorite => favorite.id !== parseInt(id, 10));
+    saveFavorites(favorites);
+}
+
 // Handle display of recipes
 function displayRecipe(recipes, wrapper, link) {
     recipes.forEach(recipe => {
