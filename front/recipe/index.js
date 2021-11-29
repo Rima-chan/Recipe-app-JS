@@ -3,28 +3,39 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 const title = document.querySelector('h1');
 
+// Check if own recipe or recipe issued from API spoonacular
 const myRecipes = getRecipes();
 const isRecipe = (element) => element.id === parseInt(id, 10);
 const index = myRecipes.findIndex(isRecipe);
 
 (async() => {
-    if (index >= 0) {
-        const recipe = myRecipes[index];
-        title.textContent = recipe.title;
-        displayMyRecipesInfos(recipe);
-    } else {
-        const data = await getRecipeById(id);
-        console.log(data)
-        if (data) {
-            displayRecipeInfos(data);
-            displayIngredients(data.extendedIngredients);
-            displayInstructions(data.analyzedInstructions[0].steps);
+    document.querySelector('#load_wrapper').classList.add('flex');
+    document.querySelector('#load_wrapper').classList.remove('hidden');
+    try {
+        if (index >= 0) {
+            const recipe = myRecipes[index];
+            title.textContent = recipe.title;
+            displayMyRecipesInfos(recipe);
         } else {
-            displayNoResults(recipeWrapper);
+            const data = await getRecipeById(id);
+            if (data) {
+                displayRecipeInfos(data);
+                displayIngredients(data.extendedIngredients);
+                displayInstructions(data.analyzedInstructions[0].steps);
+            } else {
+                displayNoResults(recipeWrapper);
+            }
         }
+    } catch(err) {
+        console.log(err);
+    } finally {
+        document.querySelector('#load_wrapper').classList.remove('flex');
+        document.querySelector('#load_wrapper').classList.add('hidden');
     }
 })();
 
+
+// Handle own recipe suppression
 recipeWrapper.addEventListener('click', (e) => {
     if (e.target.dataset.button && e.target.dataset.button === 'trash_button') {
         if (window.confirm('Do you want to delete this recipe ?')) {
@@ -35,7 +46,7 @@ recipeWrapper.addEventListener('click', (e) => {
                 removeFromFavorites(id);
             }
             removeRecipe(id);
-            document.location.href = '../index.html';
+            window.location.href = '../../index.html';
         } 
     }
 })

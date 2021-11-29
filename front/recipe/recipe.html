@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Recipe</title>
 </head>
-<body>
+<body class="overflow-x-hidden max-w-screen">
     <div class="flex">
-        <div class="min-h-screen bg-green-400 bg-opacity-60 py-8 px-4 sm:px-8">
+        <div class="min-h-screen bg-green-400 bg-opacity-60 py-8 px-1 sm:px-8">
             <div class="text-center sm:text-left">
                 <span class="inline-flex items-center pb-5">
                     <i class="fas fa-user-circle text-4xl"></i>
@@ -27,8 +27,11 @@
         <div class="flex-1 shadow-inner">
             <div class="flex justify-center items-center mt-5">
                 <i class="fas fa-utensils text-lg sm:text-2xl text-yellow-500 pl-3"></i>
-                <h1 class="text-lg text-center uppercase px-3 font-semibold text-yellow-500">My favourites</h1>
+                <h1 class="text-lg text-center uppercase px-3 font-semibold text-yellow-500">Recipe name</h1>
                 <i class="fas fa-utensils text-lg sm:text-2xl text-yellow-500 pr-3"></i>
+            </div>
+            <div class="hidden justify-center items-center mt-5" id="load_wrapper">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-500"></div> 
             </div>
             <div id="recipe_wrapper" class="flex w-full">
                 

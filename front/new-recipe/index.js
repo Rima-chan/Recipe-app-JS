@@ -3,9 +3,11 @@ const uploadButton = document.querySelector('#img');
 const preview = document.querySelector('#preview');
 const success = document.querySelector('#success');
 
+// Enable image preview
 const loadFile = (e) => {
     const reader = new FileReader();
     reader.onload = () => {
+        console.log("ok")
         const img = document.createElement('img');
         img.classList.add('shadow-lg', 'w-48', 'h-48', 'object-cover', 'pt-5');
         img.setAttribute('src', reader.result);
@@ -15,13 +17,18 @@ const loadFile = (e) => {
     reader.readAsDataURL(e.target.files[0]);
 }
 
+// Handle recipe creation
 form.addEventListener('submit', e => {
     e.preventDefault();
     const name = document.querySelector('#name');
     const ingredients = document.querySelector('#ingredients');
     const description = document.querySelector('#description');
     const file = document.querySelector('img');
-    console.log(file)
+    if (!file) {
+        document.querySelector('#file_validation').innerHTML = 'Please add an image 🙂';
+        setTimeout(() => {document.querySelector('#file_validation').innerHTML = ''}, 3000);
+        return;
+    }
     const recipe = {
         id: Date.now(),
         title: name.value,
@@ -29,7 +36,7 @@ form.addEventListener('submit', e => {
         description: description.value,
         image: file.getAttribute('src'),
         liked: false,
-    }
+    };
     const recipes = getRecipes();
     recipes.push(recipe);
     saveRecipes(recipes);
@@ -38,16 +45,15 @@ form.addEventListener('submit', e => {
     description.value = '';
     preview.classList.add('hidden');
     success.classList.remove('hidden');
-    success.classList.add('flex')
-    console.log(recipe)
+    success.classList.add('flex');
 })
 
-function getBase64Image(img) {
-    let canvas = document.createElement('canvas');
-    canvas.width = img.width;
-    canvas.height = img.heigt;
-    let ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-    let dataUrl = canvas.toDataURL("image/png");
-    return dataUrl.replace(/^data:image\/(png | jpg);base64,/, "");
-}
+// function getBase64Image(img) {
+//     let canvas = document.createElement('canvas');
+//     canvas.width = img.width;
+//     canvas.height = img.heigt;
+//     let ctx = canvas.getContext("2d");
+//     ctx.drawImage(img, 0, 0);
+//     let dataUrl = canvas.toDataURL("image/png");
+//     return dataUrl.replace(/^data:image\/(png | jpg);base64,/, "");
+// }

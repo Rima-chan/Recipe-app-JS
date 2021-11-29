@@ -32,17 +32,16 @@ const fetchRecipeById = async(id) => {
 }
 
 
-
 router.get('/search/:searchText', async(req, res) => {
     const searchText = req.params.searchText;
     const data = await fetchRecipes(searchText);
-    res.json(data);
+    return res.status(200).json(data);
 });
 
 router.get('/:id', async (req, res) => {
     const id = parseInt(req.params.id, 10);
     const data = await fetchRecipeById(id);
-    res.json(data);
+    return res.status(200).json(data);
 })
 
 module.exports = router;

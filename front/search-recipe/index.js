@@ -1,7 +1,9 @@
 const searchWrapper = document.querySelector('#search_results');
+const noResultsWrapper = document.querySelector('#no_results');
 const searchButton = document.querySelector('#search_button');
 let recipes = [];
 
+// Like button
 searchWrapper.addEventListener('click', (e) => {
     if (e.target.dataset.button) {
         const id = e.target.dataset?.button.split('_')[1];
@@ -9,21 +11,31 @@ searchWrapper.addEventListener('click', (e) => {
         toggleIcon(e);
         handleFavorites(id, recipe[0]);
     }
-})
+});
 
 searchButton.addEventListener('click', async (e) => {
+    document.querySelector('#load_wrapper').classList.remove('hidden');
+    document.querySelector('#load_wrapper').classList.add('flex');
     const input = document.querySelector('#search');
-    if (!input.value) {
-        return;
-    } else {
-        const data = await getSearchedRecipes(input.value);
-        if (data.results && data.results.length > 0) {
-            displaySearchResults(data.results)
-        } else if (data.status && data.status === 'failure') {
-            displayLimits(data.message, recipeWrapper);
-        } else if (data.results.length === 0) {
-            displayNoResults(searchWrapper);
+    try {
+        if (!input.value) {
+            return;
+        } else {
+            const data = await getSearchedRecipes(input.value);
+            console.log(data)
+            if (data.results && data.results.length > 0) {
+                displaySearchResults(data.results);
+            } else if (data.status && data.status === 'failure') {
+                displayLimits(data.message, recipeWrapper);
+            } else if (data.results.length === 0) {
+                displayNoResults(noResultsWrapper);
+            }
         }
+    } catch(err) {
+        console.log(err);
+    } finally {
+        document.querySelector('#load_wrapper').classList.remove('flex');
+        document.querySelector('#load_wrapper').classList.add('hidden');
     }
 });
 
@@ -51,4 +63,3 @@ function displaySearchResults(list) {
         searchWrapper.insertAdjacentHTML('afterbegin', template);
     });
 }
-

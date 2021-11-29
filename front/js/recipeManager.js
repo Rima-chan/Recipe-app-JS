@@ -1,4 +1,4 @@
-
+// Handle recipes with localStorage
 function getRecipes() {
     const recipes = localStorage.getItem('myRecipes');
     if (!recipes) {
@@ -18,15 +18,10 @@ function removeRecipe(id) {
     saveRecipes(recipes);
 }
 
-function removeFromFavorites(id) {
-    let favorites = getFavorites();
-    favorites = favorites.filter(favorite => favorite.id !== parseInt(id, 10));
-    saveFavorites(favorites);
-}
-
+// Handle display of recipes
 function displayRecipe(recipes, wrapper, link) {
     recipes.forEach(recipe => {
-        const template = `<div class="flex flex-col w-60 h-auto rounded-md shadow-lg sm:m-4" id="${recipe.id}">
+        const template = `<div class="flex flex-col w-60 h-auto rounded-md shadow-lg m-2 sm:m-4" id="${recipe.id}">
                             <img src="${recipe.image}" class="w-full h-1/2 object-cover">
                             <div class="flex-1 p-3">
                                 <div class="w-full flex justify-between">
@@ -49,8 +44,13 @@ function displayRecipe(recipes, wrapper, link) {
 function displayNoResults(wrapper) {
     const template = '<div>No recipes found 🤷</div>';
     wrapper.insertAdjacentHTML('afterbegin', template);
+    setTimeout(() => {
+        console.log('clear');
+        wrapper.innerHTML = '';
+    }, 3000);
 }
 
+// Linked to Spoonacular requests limits
 function displayLimits(error, wrapper) {
     const template = `<div class="m-1">
                         <p class="pb-3">Sorry it doesn\'t worked 🤷</p>
@@ -59,6 +59,7 @@ function displayLimits(error, wrapper) {
     wrapper.insertAdjacentHTML('afterbegin', template);
 }
 
+// Handle Spoonacular's API CRUD (GET) 
 async function getSearchedRecipes(search) {
     const host = getApiUrl()
     const url = `${host}/recipe/search/${search}`;

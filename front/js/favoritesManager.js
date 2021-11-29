@@ -2,17 +2,20 @@ let favoritesRecipes = [];
 
 function handleFavorites(id, recipe) {
     let favorites = getFavorites();
-    const isRecipe = (element) => element.id === parseInt(id, 10);
-    const index = favorites.findIndex(isRecipe);
-    if (index === -1) {
+    console.log(favorites);
+    const isNotFavorite = favorites.every( element => element.id !== parseInt(id, 10));
+    console.log(isNotFavorite);
+    if (isNotFavorite) {
         favorites.push(recipe);
-    } else if (index >= 0) {
+    } else if (!isNotFavorite) {
         favorites = favorites.filter(element => element.id !== parseInt(id, 10));
     } 
     recipe.liked = !recipe.liked;
-    console.log(recipe);
+    // For personnal recipes (added by user)
     const recipes = getRecipes();
-    const indexOwnFavorite = recipes.findIndex(isRecipe);
+    console.log(recipe);
+    const indexOwnFavorite = recipes.findIndex(recipe => recipe.id === parseInt(id, 10));
+    console.log(indexOwnFavorite)
     if (indexOwnFavorite >= 0) {
         recipes[indexOwnFavorite].liked = !recipes[indexOwnFavorite].liked;
         saveRecipes(recipes);
@@ -37,12 +40,6 @@ function getFavorites() {
 
 function saveFavorites(list) {
     localStorage.setItem('favoritesRecipes', JSON.stringify(list));
-}
-
-function removeRecipe(id) {
-    let recipes = getRecipes();
-    recipes = recipes.filter(recipe => recipe   .id !== parseInt(id, 10));
-    saveRecipes(recipes);
 }
 
 function isFavorite(id) {
